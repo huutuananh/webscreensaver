@@ -92,12 +92,13 @@ class WebScreensaver(object):
             self.win.get_window().reparent(self.gdk_win, 0, 0)
 
             x, y, w, h = self.gdk_win.get_geometry()
+            logger.info(f"Get geometry: {x}, {y}, {w}, {h}")
 
             # Make us cover our parent window
             self.win.move(0, 0)
-            # self.win.set_default_size(w, h)
-            # self.win.set_size_request(w, h)
-            self.win.fullscreen()
+            self.win.set_default_size(w, h)
+            self.win.set_size_request(w, h)
+            # self.win.fullscreen()
 
             self.w, self.h = w, h
         else:

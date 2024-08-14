@@ -24,6 +24,7 @@ import pathlib
 import random
 import signal
 import sys
+import logging
 
 import gi
 
@@ -34,6 +35,23 @@ gi.require_version("WebKit2", "4.1")
 
 from gi.repository import Gdk, GdkX11, GObject, Gtk
 from gi.repository import WebKit2 as WebKit
+
+# Tạo logger
+logger = logging.getLogger("example_logger")
+logger.setLevel(logging.DEBUG)  # Thiết lập mức độ log
+
+# Tạo file handler
+handler = logging.FileHandler("/var/log/xscreensaver.log")
+handler.setLevel(logging.DEBUG)  # Thiết lập mức độ log cho handler
+
+# Tạo formatter
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+
+# Thêm formatter vào handler
+handler.setFormatter(formatter)
+
+# Thêm handler vào logger
+logger.addHandler(handler)
 
 
 class WebScreensaver(object):
@@ -179,6 +197,7 @@ class WebScreensaver(object):
         if win_id:
             win_id = int(win_id, 16)
 
+        logger.info(f"Get window id: {win_id}")
         return win_id
 
 
@@ -383,6 +402,9 @@ class Cycler:
 if __name__ == "__main__":
     import argparse
 
+    # Sử dụng logger
+    logger.info("Start webscreensaver.py")
+
     parser = argparse.ArgumentParser(
         description="WebScreensaver: Run a web page as your screensaver"
     )
@@ -418,6 +440,7 @@ if __name__ == "__main__":
 
     if args.url:
         url = args.url
+        logger.info(f"Get url: {args.url}")
     elif args.cycle:
         cache_dir = (
             pathlib.Path(

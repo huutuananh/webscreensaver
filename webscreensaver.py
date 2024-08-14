@@ -133,7 +133,7 @@ class WebScreensaver(object):
 
         self.browser.set_size_request(self.w, self.h)
 
-        self.browser.connect("load-changed", self.handle_load_changed)
+        # self.browser.connect("load-changed", self.handle_load_changed)
 
     def setup_cookie_jar(self):
         if self.cookie_file:

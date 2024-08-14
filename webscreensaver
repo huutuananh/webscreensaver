@@ -82,6 +82,7 @@ class WebScreensaver(object):
         else:
             self.win = Gtk.Window()
             self.win.set_default_size(self.w, self.h)
+            self.win.move(0, 0)
 
     def setup_browser(self):
         """Sets up WebKit in our window"""

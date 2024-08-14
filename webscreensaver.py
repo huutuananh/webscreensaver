@@ -79,7 +79,7 @@ class WebScreensaver(object):
     def setup_window(self):
         """Perform some magic (if needed) to set up a Gtk window"""
         if self.window_id:
-            self.win = Gtk.Window(type=Gtk.WindowType.NORMAL)
+            self.win = Gtk.Window(type=Gtk.WindowType.POPUP)
 
             gdk_display = GdkX11.X11Display.get_default()
             self.gdk_win = GdkX11.X11Window.foreign_new_for_display(

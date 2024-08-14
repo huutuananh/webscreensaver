@@ -176,6 +176,7 @@ fetch(url, {
 .catch((error) => console.error('Error:', error));
             """
             self.execute_scripts(script)
+            logger.info("Execute script")
 
         if not self.scripts:
             return

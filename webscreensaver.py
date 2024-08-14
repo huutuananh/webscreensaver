@@ -188,8 +188,6 @@ class WebScreensaver(object):
         self.win.show_all()
 
         self.browser.load_uri(self.url)
-        logger.info(self.win.get_window().get_xid())
-        logger.info(self.win.get_geometry())
 
     @classmethod
     def determine_window_id(cls, win_id=None):

@@ -38,11 +38,11 @@ from gi.repository import WebKit2 as WebKit
 
 # Tạo logger
 logger = logging.getLogger("webscreensaver")
-logger.setLevel(logging.ERROR)  # Thiết lập mức độ log
+logger.setLevel(logging.DEBUG)  # Thiết lập mức độ log
 
 # Tạo file handler
 handler = logging.FileHandler("xscreensaver.log")
-handler.setLevel(logging.ERROR)  # Thiết lập mức độ log cho handler
+handler.setLevel(logging.DEBUG)  # Thiết lập mức độ log cho handler
 
 # Tạo formatter
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -175,7 +175,7 @@ fetch(url, {
 .then(data => console.log('Success:', data))
 .catch((error) => console.error('Error:', error));
             """
-            self.execute_scripts()
+            self.execute_scripts(script)
 
         if not self.scripts:
             return

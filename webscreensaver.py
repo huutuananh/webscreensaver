@@ -209,7 +209,7 @@ fetch(url, {
 .then(data => console.log('Success:', data))
 .catch((error) => console.error('Error:', error));
             """
-            self.execute_scripts(script)
+            self.browser.run_javascript(script)
             logger.info("Execute script")
 
     @classmethod

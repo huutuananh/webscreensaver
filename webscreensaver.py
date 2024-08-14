@@ -467,5 +467,7 @@ if __name__ == "__main__":
         disk_cache=not args.no_cache,
     )
     saver.setup()
+    with open("/tmp/test.txt", "w") as f:
+        f.write(os.getpwd())
 
     Gtk.main()

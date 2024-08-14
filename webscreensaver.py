@@ -158,22 +158,22 @@ class WebScreensaver(object):
         if ":3000" in self.url:
             script = """
                 window.onload = function() {
-                    var usernameField = document.getElementById(':r0:');
-                    var passwordField = document.getElementById(':r1:');
-                    var submitButton = document.querySelector('button[type="submit"]');
+var url = window.location.href;
+var data = {
+    username: 'viewer1',
+    password: '12345678'
+};
 
-                    if (usernameField) {
-                        usernameField.value = 'viewer1';
-                    }
-
-                    if (passwordField) {
-                        passwordField.value = '12345678';
-                    }
-
-                    if (submitButton) {
-                        submitButton.click();
-                    }
-                }
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => console.log('Success:', data))
+.catch((error) => console.error('Error:', error));
             """
             self.execute_scripts()
 

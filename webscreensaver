@@ -61,7 +61,7 @@ class WebScreensaver(object):
     def setup_window(self):
         """Perform some magic (if needed) to set up a Gtk window"""
         if self.window_id:
-            self.win = Gtk.Window(Gtk.WindowType.POPUP)
+            self.win = Gtk.Window(type=Gtk.WindowType.POPUP)
 
             gdk_display = GdkX11.X11Display.get_default()
             self.gdk_win = GdkX11.X11Window.foreign_new_for_display(
@@ -77,8 +77,9 @@ class WebScreensaver(object):
 
             # Make us cover our parent window
             self.win.move(0, 0)
-            self.win.set_default_size(w, h)
-            self.win.set_size_request(w, h)
+            # self.win.set_default_size(w, h)
+            # self.win.set_size_request(w, h)
+            self.win.fullscreen()
 
             self.w, self.h = w, h
         else:

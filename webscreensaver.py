@@ -19,12 +19,12 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """
 
+import logging
 import os
 import pathlib
 import random
 import signal
 import sys
-import logging
 
 import gi
 
@@ -37,11 +37,11 @@ from gi.repository import Gdk, GdkX11, GObject, Gtk
 from gi.repository import WebKit2 as WebKit
 
 # Tạo logger
-logger = logging.getLogger("example_logger")
+logger = logging.getLogger("webscreensaver")
 logger.setLevel(logging.DEBUG)  # Thiết lập mức độ log
 
 # Tạo file handler
-handler = logging.FileHandler("/var/log/xscreensaver.log")
+handler = logging.FileHandler("xscreensaver.log")
 handler.setLevel(logging.DEBUG)  # Thiết lập mức độ log cho handler
 
 # Tạo formatter

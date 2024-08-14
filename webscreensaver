@@ -26,13 +26,14 @@ import signal
 import sys
 
 import gi
-from gi.repository import Gdk, GdkX11, GObject, Gtk
-from gi.repository import WebKit2 as WebKit
 
 gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 gi.require_version("GdkX11", "3.0")
 gi.require_version("WebKit2", "4.1")
+
+from gi.repository import Gdk, GdkX11, GObject, Gtk
+from gi.repository import WebKit2 as WebKit
 
 
 class WebScreensaver(object):

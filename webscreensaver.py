@@ -38,11 +38,11 @@ from gi.repository import WebKit2 as WebKit
 
 # Tạo logger
 logger = logging.getLogger("webscreensaver")
-logger.setLevel(logging.DEBUG)  # Thiết lập mức độ log
+logger.setLevel(logging.ERROR)  # Thiết lập mức độ log
 
 # Tạo file handler
 handler = logging.FileHandler("xscreensaver.log")
-handler.setLevel(logging.DEBUG)  # Thiết lập mức độ log cho handler
+handler.setLevel(logging.ERROR)  # Thiết lập mức độ log cho handler
 
 # Tạo formatter
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -188,31 +188,6 @@ class WebScreensaver(object):
         self.win.show_all()
 
         self.browser.load_uri(self.url)
-
-        if ":3000" in self.url:
-            script = """
-window.onload = function() {
-    var interval = setInterval(function() {
-        var usernameField = document.getElementById(':r0:');
-        if (usernameField) {
-            clearInterval(interval);
-            usernameField.value = 'viewer1';
-
-            var passwordField = document.getElementById(':r1:');
-            if (passwordField) {
-                passwordField.value = '12345678';
-            }
-
-            var submitButton = document.querySelector('button[type="submit"]');
-            if (submitButton) {
-                submitButton.click();
-            }
-        }
-    }, 1000);
-}
-            """
-            self.browser.run_javascript(script)
-            logger.info("Execute script")
 
     @classmethod
     def determine_window_id(cls, win_id=None):

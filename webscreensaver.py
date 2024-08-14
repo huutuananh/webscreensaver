@@ -187,6 +187,7 @@ class WebScreensaver(object):
         self.win.show_all()
 
         self.browser.load_uri(self.url)
+        logger.info(self.win.get_window().get_xid())
 
     @classmethod
     def determine_window_id(cls, win_id=None):
@@ -467,7 +468,5 @@ if __name__ == "__main__":
         disk_cache=not args.no_cache,
     )
     saver.setup()
-    with open("/tmp/test.txt", "w") as f:
-        f.write(os.getcwd())
 
     Gtk.main()

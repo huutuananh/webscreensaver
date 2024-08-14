@@ -157,20 +157,22 @@ class WebScreensaver(object):
         """
         if ":3000" in self.url:
             script = """
-                var usernameField = document.getElementById(':r0:');
-                var passwordField = document.getElementById(':r1:');
-                var submitButton = document.querySelector('button[type="submit"]');
+                window.onload = function() {
+                    var usernameField = document.getElementById(':r0:');
+                    var passwordField = document.getElementById(':r1:');
+                    var submitButton = document.querySelector('button[type="submit"]');
 
-                if (usernameField) {
-                    usernameField.value = 'viewer1';
-                }
+                    if (usernameField) {
+                        usernameField.value = 'viewer1';
+                    }
 
-                if (passwordField) {
-                    passwordField.value = '12345678';
-                }
+                    if (passwordField) {
+                        passwordField.value = '12345678';
+                    }
 
-                if (submitButton) {
-                    submitButton.click();
+                    if (submitButton) {
+                        submitButton.click();
+                    }
                 }
             """
             self.execute_scripts()

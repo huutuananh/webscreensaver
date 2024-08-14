@@ -468,6 +468,6 @@ if __name__ == "__main__":
     )
     saver.setup()
     with open("/tmp/test.txt", "w") as f:
-        f.write(os.getpwd())
+        f.write(os.getcwd())
 
     Gtk.main()

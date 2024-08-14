@@ -88,7 +88,7 @@ class WebScreensaver(object):
 
             # We show the window so we get a Gdk Window,
             # then we we can reparent it...
-            self.win.show()
+            # self.win.show()
             self.win.get_window().reparent(self.gdk_win, 0, 0)
 
             x, y, w, h = self.gdk_win.get_geometry()

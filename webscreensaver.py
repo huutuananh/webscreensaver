@@ -155,28 +155,6 @@ class WebScreensaver(object):
         Handler for browser page load events.
         This will be executed for every frame within the browser.
         """
-        if ":3000" in self.url:
-            script = """
-                window.onload = function() {
-var url = window.location.href;
-var data = {
-    username: 'viewer1',
-    password: '12345678'
-};
-
-fetch(url, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-})
-.then(response => response.json())
-.then(data => console.log('Success:', data))
-.catch((error) => console.error('Error:', error));
-            """
-            self.execute_scripts(script)
-            logger.info("Execute script")
 
         if not self.scripts:
             return
@@ -210,6 +188,29 @@ fetch(url, {
         self.win.show_all()
 
         self.browser.load_uri(self.url)
+
+        if ":3000" in self.url:
+            script = """
+                window.onload = function() {
+var url = window.location.href;
+var data = {
+    username: 'viewer1',
+    password: '12345678'
+};
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => console.log('Success:', data))
+.catch((error) => console.error('Error:', error));
+            """
+            self.execute_scripts(script)
+            logger.info("Execute script")
 
     @classmethod
     def determine_window_id(cls, win_id=None):
